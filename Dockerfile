@@ -15,7 +15,6 @@ RUN git clone --branch ${COTURN_VERSION} https://github.com/coturn/coturn /tmp &
 WORKDIR /turn/bin
 
 RUN chmod +x turnserver
-COPY docker-entrypoint.sh /
 
 # STUN/TURN
 EXPOSE 3478:3478/udp
@@ -36,4 +35,4 @@ EXPOSE 5350:5350/tcp
 # TURN RELAY MEDIA PORTS
 EXPOSE 49152:65535/udp
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/turn/bin/turnserver"]
